@@ -1,0 +1,186 @@
+---
+/* eslint max-lines: 'off' */
+
+import { asset } from '../lib/data';
+import { AI_INSIGHT_DATA } from './DashBoard.client';
+---
+
+<!-- ページ全体のコンテナ -->
+<div class="px-4 pt-6">
+	<!-- グリッドレイアウト: 上段はメインチャート -->
+	<div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+		<!-- ▼▼ メインチャート (main-chart) ▼▼ -->
+		<div
+			class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+		>
+			<div class="flex items-center justify-between mb-4">
+				<div class="flex-shrink-0">
+					<!-- 今週の入店者数（合計） -->
+					<span
+						class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white"
+					>
+						975名
+					</span>
+					<h3 class="text-base font-light text-gray-500 dark:text-gray-400">
+						今週の来店者数
+					</h3>
+				</div>
+				<!-- 増減率などの表示 -->
+				<div
+					class="flex items-center justify-end flex-1 text-base font-medium text-green-500 dark:text-green-400"
+				>
+					+9.7%
+					<svg
+						class="w-5 h-5"
+						fill="currentColor"
+						viewBox="0 0 20 20"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 
+              0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 
+              0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+							clip-rule="evenodd"></path>
+					</svg>
+				</div>
+			</div>
+
+			<!-- メインチャート描画先 -->
+			<div id="main-chart"></div>
+
+			<!-- フッター部分（期間ドロップダウンなど） -->
+			<div
+				class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700"
+			>
+				<div>
+					<button
+						class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+						type="button"
+						data-dropdown-toggle="weekly-visitors-dropdown"
+					>
+						直近7日間
+						<svg
+							class="w-4 h-4 ml-2"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M19 9l-7 7-7-7"></path>
+						</svg>
+					</button>
+					<!-- ドロップダウンメニュー -->
+					<!-- （省略） -->
+				</div>
+				<div class="flex-shrink-0">
+					<a
+						href="#"
+						class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+					>
+						入店者レポート
+						<svg
+							class="w-4 h-4 ml-1"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M9 5l7 7-7 7"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- ▼▼ 推定属性チャート (attribute-chart) ▼▼ -->
+		<div
+			class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+		>
+			<!-- タイトル -->
+			<h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+				今週の来店者属性
+			</h3>
+			<!-- 描画先 -->
+			<div id="attribute-chart" class="h-72"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 2行目: 性別比率, 年齢分布 -->
+<div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-2">
+	<!-- ▼▼ 性別比率チャート (gender-chart) ▼▼ -->
+	<div
+		class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+	>
+		<h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+			今週の性別比率
+		</h3>
+		<div id="gender-chart" class="h-72"></div>
+	</div>
+
+	<!-- ▼▼ 年齢分布チャート (age-chart) ▼▼ -->
+	<div
+		class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+	>
+		<h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+			今週の年齢分布
+		</h3>
+		<div id="age-chart" class="h-72"></div>
+	</div>
+</div>
+
+<!-- 3行目: 時間帯別混雑率 (time-chart) -->
+<div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-1 2xl:grid-cols-1">
+	<div
+		class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+	>
+		<h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+			今週の時間帯別混雑率
+		</h3>
+		<!-- 1日の時間帯ごとを棒グラフで可視化 -->
+		<div id="time-chart" class="h-72"></div>
+	</div>
+</div>
+
+<!-- ▼▼ Carousel（AIインサイト）: 省略（上記と同様） ▼▼ -->
+
+<script>
+	import './DashBoard.client.js';
+</script>
+
+<style is:global>
+	/* chart styles */
+	.apexcharts-tooltip {
+		@apply bg-white dark:bg-gray-700 text-gray-500 dark:text-gray-400 border-0 rounded-lg shadow-lg !important;
+	}
+
+	.apexcharts-tooltip .apexcharts-tooltip-title {
+		@apply py-2 px-4 bg-gray-100 dark:bg-gray-600 border-b border-gray-200 dark:border-gray-500 !important;
+	}
+
+	.apexcharts-xaxistooltip {
+		@apply text-gray-500 border-0 bg-white dark:bg-gray-700 dark:text-gray-300 rounded-lg shadow-lg !important;
+	}
+
+	.apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+		@apply dark:text-white;
+	}
+
+	.apexcharts-xaxistooltip-text {
+		@apply font-medium text-sm !important;
+	}
+
+	.apexcharts-xaxistooltip:before,
+	.apexcharts-xaxistooltip:after {
+		@apply border-0 !important;
+	}
+</style>
