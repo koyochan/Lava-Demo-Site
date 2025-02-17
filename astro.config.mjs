@@ -7,23 +7,20 @@ const DEV_PORT = 2121;
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.CI
-		? 'https://themesberg.github.io'
+	site: process.env.VERCEL
+		? 'https://lava-demo-site-xi.vercel.app/'
 		: `http://localhost:${DEV_PORT}`,
-	base: process.env.CI ? '/flowbite-astro-admin-dashboard' : undefined,
+	base: '/',
+	output: 'static',
 
-	// output: 'server',
-
-	/* Like Vercel, Netlify,… Mimicking for dev. server */
-	// trailingSlash: 'always',
+	/* Vercel や Netlify のデフォルト設定に合わせる */
+	trailingSlash: 'always',
 
 	server: {
-		/* Dev. server only */
-		port: DEV_PORT,
+		port: DEV_PORT, // Dev. server only
 	},
 
 	integrations: [
-		//
 		sitemap(),
 		tailwind(),
 	],
