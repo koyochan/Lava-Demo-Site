@@ -4,7 +4,7 @@ import { asset } from '../lib/data';
 ---
 
 <!-- ページ全体のコンテナ -->
-<div class="px-4 pt-6">
+<div class="px-4">
 	<!-- グリッドレイアウト: 上段はメインチャート -->
 	<div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
 		<!-- ▼▼ メインチャート (main-chart) ▼▼ -->
@@ -149,7 +149,7 @@ import { asset } from '../lib/data';
 	</div>
 </div>
 
-<!-- ▼▼ Carousel（AIインサイト）: 省略（上記と同様） ▼▼ -->
+<!-- ▼▼ Carousel（AIインサイト）: 蒲田東口店 ▼▼ -->
 <div class="grid grid-cols-1 my-4 xl:gap-4">
 	<div
 		class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
@@ -157,7 +157,7 @@ import { asset } from '../lib/data';
 		<div id="carousel" class="relative" data-carousel="">
 			<!-- スライド領域の高さを設定 -->
 			<div class="relative mx-auto overflow-hidden h-[36rem] lg:h-[24rem]">
-				<!-- ▼▼ スライド1: この店舗の最新トレンド ▼▼ -->
+				<!-- ▼▼ スライド1: 最新トレンド ▼▼ -->
 				<div
 					class="hidden duration-700 ease-in-out bg-white dark:bg-gray-800"
 					data-carousel-item
@@ -198,12 +198,17 @@ import { asset } from '../lib/data';
 					</div>
 
 					<h3 class="mb-4 text-2xl font-medium text-gray-900 dark:text-white">
-						○○店の最新トレンド
+						蒲田東口店の最新トレンド
 					</h3>
 
 					<p class="mb-4 text-gray-500 dark:text-gray-400">
-						直近1ヶ月で当店の会員登録数が10%増加し、特に夕方(18〜20時)は
-						混雑率が上昇傾向にあります。土曜朝のクラスも60%を超える予約率を記録しています。
+						直近1週間の来店者数は
+						<b class="text-green-600">975名</b>（先週比 +12%）
+						となり、昼～夕方帯の混雑率が上昇傾向にあります。
+						<br />
+						年齢層では 20～30代 が多く、男女比は
+						<b class="text-green-600">女性が90%</b>
+						を占めています。
 					</p>
 
 					<p class="mb-2 text-lg font-medium text-gray-900 dark:text-white">
@@ -213,16 +218,21 @@ import { asset } from '../lib/data';
 						class="pl-4 mb-4 space-y-3 text-gray-500 list-disc dark:text-gray-400"
 					>
 						<li>
-							平日夕方の予約率: <b class="text-green-600">70%</b> (先月比+8%)
+							13時台の混雑率が
+							<b class="text-green-600">60%</b>
+							とピーク（昼休憩の需要増）
 						</li>
 						<li>
-							20〜30代女性の利用者が全体の<b class="text-green-600">60%</b>に
+							20代 (200人), 30代 (150人) が合計
+							<b class="text-green-600">350人</b>
+							で中心層
 						</li>
 						<li>
-							土曜朝(9〜11時)のクラスが<b class="text-green-600">60%</b
-							>超の予約率
+							オフィスワーカー
+							<b class="text-green-600">250名</b>
+							&rarr; 通勤需要が高め
 						</li>
-						<li>夜間(21時以降)は利用率が低く改善可能</li>
+						<li>男性は約10%で伸びしろあり</li>
 					</ul>
 
 					<a
@@ -277,8 +287,15 @@ import { asset } from '../lib/data';
 					</div>
 
 					<p class="mb-4 text-gray-500 dark:text-gray-400">
-						AI予測によると、短時間レッスンや早朝クラスの需要が引き続き増加見込みです。
-						店舗スタッフが主導で導入できる小規模な施策から始めると効果的です。
+						ランチタイム(12〜14時)の混雑率が高まっているため、
+						<b class="text-teal-600">短時間レッスン</b>
+						や
+						<b class="text-teal-600">軽食付きクラス</b>
+						の導入が有効です。
+						<br />
+						また、夕方(18〜20時)に向けた
+						<b class="text-teal-600">時短プログラム</b>
+						も好評を得られる見込みがあります。
 					</p>
 
 					<p class="mb-4 text-lg font-medium text-gray-900 dark:text-white">
@@ -289,17 +306,18 @@ import { asset } from '../lib/data';
 						class="pl-2 mb-4 space-y-3 text-gray-500 list-disc dark:text-gray-400"
 					>
 						<li>
-							<b class="text-gray-800 dark:text-gray-200">朝ヨガ30分コース:</b>
-							平日早朝の短縮レッスンを1コマ追加（スタッフ調整で実施可能）
+							<b class="text-gray-800 dark:text-gray-200">ランチ30分コース:</b>
+							オフィスワーカー向けに、昼休憩中の短縮レッスンを新設
 						</li>
 						<li>
-							<b class="text-gray-800 dark:text-gray-200">夕方時短プログラム:</b
+							<b class="text-gray-800 dark:text-gray-200"
+								>夕方クイックプログラム:</b
 							>
-							18時台に1回30分のクイックレッスンを開設し、混雑を分散
+							18時台に30分のエクササイズを導入し混雑分散
 						</li>
 						<li>
 							<b class="text-gray-800 dark:text-gray-200">店頭予約サポート:</b>
-							スタッフが空きクラス案内・クロスセルを行う (アプリ不要)
+							スタッフが空きクラスを案内し、回数券やクーポンを案内
 						</li>
 					</ul>
 
@@ -352,8 +370,11 @@ import { asset } from '../lib/data';
 					</div>
 
 					<p class="mb-2 text-gray-500 dark:text-gray-400">
-						当店の来店データをもとに、スタッフ配置と店頭キャンペーンを最適化する
-						案がAIから提示されています。店舗レベルで対応しやすい項目だけを抜粋しました。
+						13時台の混雑が顕著なため、
+						<b class="text-indigo-600">スタッフ増員</b>
+						と受付のサポート体制強化を推奨。 また、
+						<b class="text-indigo-600">20代女性</b>
+						が多いので、割引プランや店頭キャンペーンを拡充すると効果的です。
 					</p>
 
 					<h3 class="mb-2 text-lg font-medium text-gray-900 dark:text-white">
@@ -365,21 +386,23 @@ import { asset } from '../lib/data';
 					>
 						<li>
 							<b class="text-gray-800 dark:text-gray-200">ピーク対策:</b>
-							平日18〜20時に2名のインストラクターを確保＋受付のサポート要員配置
+							12〜14時に受付スタッフを追加配置
 						</li>
 						<li>
-							<b class="text-gray-800 dark:text-gray-200">学生向け割引:</b>
-							土日14時台に学生が多いため、店頭で学割プランを追加提案
+							<b class="text-gray-800 dark:text-gray-200"
+								>若年層向けキャンペーン:</b
+							>
+							20〜30代対象の「ランチ割」や「夕方割」を導入
 						</li>
 						<li>
-							<b class="text-gray-800 dark:text-gray-200">夜間帯のテコ入れ:</b>
-							21時以降に来店した人向けに「ナイトプラン」の割引券を配布
+							<b class="text-gray-800 dark:text-gray-200">夜間枠の強化:</b>
+							21時以降の利用者増を狙い「ナイトプラン」を新設
 						</li>
 					</ul>
 
 					<p class="mb-4 text-gray-500 dark:text-gray-400">
-						キャンペーン告知やスタッフ配置は店舗判断で実行可能です。
-						定期的に来店データをチェックし、適宜ブラッシュアップしましょう。
+						店舗レベルで実施可能なキャンペーンを増やし、混雑を分散しながら
+						集客を高めましょう。定期的にデータを確認し、施策を最適化します。
 					</p>
 
 					<a
@@ -432,8 +455,9 @@ import { asset } from '../lib/data';
 					</div>
 
 					<p class="mb-2 text-gray-500 dark:text-gray-400">
-						当店のデータでは、平日昼間や土曜午後に初回体験が集中する傾向あり。
-						店舗内イベントや回数券キャンペーンなど、**現場で実施可能な施策**を提案します。
+						20代〜30代女性のニーズが高いため、
+						<b class="text-purple-600">美容・健康系イベント</b>
+						の実施で新規入会を促進できます。 男性向け施策も拡大し、10%の男性会員を増やすチャンスです。
 					</p>
 
 					<h3 class="mb-2 text-lg font-medium text-gray-900 dark:text-white">
@@ -444,22 +468,22 @@ import { asset } from '../lib/data';
 						class="pl-5 mb-4 space-y-2 text-gray-500 list-disc dark:text-gray-400"
 					>
 						<li>
-							<b class="text-gray-800 dark:text-gray-200">トライアル強化:</b>
-							平日昼間の初回体験枠を増やし、店頭で次回予約も促進
+							<b class="text-gray-800 dark:text-gray-200">土日イベント:</b>
+							「ヨガグッズ体験会」「健康相談会」を週末に開催
+						</li>
+						<li>
+							<b class="text-gray-800 dark:text-gray-200">メンズデー導入:</b>
+							男性会員向けに割引や特典を用意し、利用率アップを狙う
 						</li>
 						<li>
 							<b class="text-gray-800 dark:text-gray-200">回数券の店頭割引:</b>
-							登録日当日のみ有効な割引クーポンを手渡し→リピート率UP
-						</li>
-						<li>
-							<b class="text-gray-800 dark:text-gray-200">ミニイベント開催:</b>
-							店舗スペースで「ヨガグッズ試用会」「健康相談会」など週末に実施
+							初回体験者に当日限定クーポンを渡してリピート率を上げる
 						</li>
 					</ul>
 
 					<p class="mb-4 text-gray-500 dark:text-gray-400">
-						大掛かりなシステム連携なしでも、店頭スタッフのアイデア次第で
-						新規入会のハードルを下げ、既存会員の満足度も高められます。
+						店舗独自のイベントや割引を活用して、幅広い年代・性別のニーズを取り込みましょう。
+						継続的なデータ分析で、効果を検証しながら改善を進めることが重要です。
 					</p>
 
 					<a
@@ -549,7 +573,6 @@ import { asset } from '../lib/data';
 		</div>
 	</div>
 </div>
-
 <script>
 	import './DashBoard.client.js';
 </script>
